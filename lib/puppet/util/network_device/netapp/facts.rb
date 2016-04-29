@@ -140,7 +140,7 @@ class Puppet::Util::NetworkDevice::Netapp::Facts
 
         # Facts dump
         Puppet.debug("System info = #{@facts.inspect}")
-      else if cluster_name != host.downcase
+      else if cluster_name.downcase != host.downcase
         raise ArgumentError, "No matching system found with the system name #{host}"
         end
       end
