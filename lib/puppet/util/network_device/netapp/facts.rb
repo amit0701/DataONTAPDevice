@@ -117,6 +117,8 @@ class Puppet::Util::NetworkDevice::Netapp::Facts
         host.downcase == system.child_get_string("system-name").downcase
       end
 
+      Puppet.debug("Cluster_Name = #{cluster_name}")
+      Puppet.debug("Host Name = #{host}")
       if system_host
         # Pull out the required variables
         [
