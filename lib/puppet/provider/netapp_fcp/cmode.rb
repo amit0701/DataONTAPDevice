@@ -46,16 +46,13 @@ Puppet::Type.type(:netapp_fcp).provide(:cmode, :parent => Puppet::Provider::Neta
     end
   end
 
-
   def flush
     if @property_hash[:ensure] == :absent
       fcpstop()
       fcpdestroy()
     end 
   end   
-      
-
-
+ 
   def state=(value)
     case resource[:state]
     when :on
@@ -85,6 +82,4 @@ Puppet::Type.type(:netapp_fcp).provide(:cmode, :parent => Puppet::Provider::Neta
     args += ['start', resource[:start]] if resource[:start]
     args
   end
-
-
 end
