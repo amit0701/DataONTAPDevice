@@ -49,9 +49,9 @@ class Puppet::Provider::Netapp < Puppet::Provider
               result = transport.invoke(apicommand, *args)
             end
             if result.results_status == 'failed'
-              resize_error = "New LUN size is the same as the old LUN size"
-              error = result.results_reason
-              if error != resize_error
+              resize_error_code = "9042" 
+              error = result.results_errno
+              if error != resize_error_code
                 raise Puppet::Error, "Executing api call #{[apicommand, args].flatten.join(' ')} failed: #{result.results_reason.inspect}"
               end
             end
